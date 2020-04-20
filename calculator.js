@@ -40,14 +40,17 @@ keys.on('click', function (e) {
         }
         if (isStage2) {
             firstNumber += value;
+            renderHtml(firstNumber, null)
             return;
         }
         if (isStage3) {
             secondNumber = value;
+            renderHtml(firstNumber, null)
             return;
         }
         if (isStage4) {
             firstNumber = value;
+            renderHtml(firstNumber, null)
             return;
         }
 
@@ -57,79 +60,98 @@ keys.on('click', function (e) {
 
         if (isStage1) {
             firstNumber = value;
+            renderHtml(firstNumber, null)
             return;
         }
         if (isStage2) {
-            firstNumber = value;
+            firstNumber += value;
+            renderHtml(firstNumber, null)
             return;
         }
         if (isStage3) {
-            firstNumber = value;
+            secondNumber = value;
+            renderHtml(firstNumber, null)
             return;
         }
         if (isStage4) {
             firstNumber = value;
+            renderHtml(firstNumber, null)
             return;
         }
  
     }
+
     if (dataType === 'decimal') {
         let value = e.target.innerText;
  
         if (isStage1) {
             firstNumber = value;
+            renderHtml(firstNumber, null)
             return;
         }
         if (isStage2) {
-            firstNumber = value;
+            firstNumber += value;
+            renderHtml(firstNumber, null)
             return;
         }
         if (isStage3) {
-            firstNumber = value;
+            secondNumber = value;
+            renderHtml(firstNumber, null)
             return;
         }
         if (isStage4) {
             firstNumber = value;
+            renderHtml(firstNumber, null)
             return;
         }
     }
+
     if (dataType === 'equals') {
         let value = e.target.innerText;
 
         if (isStage1) {
             firstNumber = value;
+            renderHtml(firstNumber, null)
             return;
         }
         if (isStage2) {
-            firstNumber = value;
+            firstNumber += value;
+            renderHtml(firstNumber, null)
             return;
         }
         if (isStage3) {
-            firstNumber = value;
+            secondNumber = value;
+            renderHtml(firstNumber, null)
             return;
         }
         if (isStage4) {
             firstNumber = value;
+            renderHtml(firstNumber, null)
             return;
         }
     }
+
     if (dataType === 'clear') {
         let value = e.target.innerText;
 
         if (isStage1) {
             firstNumber = value;
+            renderHtml(firstNumber, null)
             return;
         }
         if (isStage2) {
-            firstNumber = value;
+            firstNumber += value;
+            renderHtml(firstNumber, null)
             return;
         }
         if (isStage3) {
-            firstNumber = value;
+            secondNumber = value;
+            renderHtml(firstNumber, null)
             return;
         }
         if (isStage4) {
             firstNumber = value;
+            renderHtml(firstNumber, null)
             return;
         }
     }
