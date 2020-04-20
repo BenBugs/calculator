@@ -10,11 +10,12 @@
 // so if I hit number then store number
 // if I hit operator,( +, -, *, /,) clear or equals then nothing happen?
 
-//need mechanism to see what key the user is on
 
 // what circumstances would you proceed to stage 2? 
-// a. if a single number is present
+// a. if at least a single number is present
 // b. if a decimal is present
+// c. if no operator is present
+// d. if no second number is present
 
 //STAGE 2
 // 1. hit number
@@ -30,7 +31,10 @@
 // if i hit decimal then check if a decimal is string is already present in the first number. if yes do nothing if no add decimal to number string
 
 // what circumstances would you proceed to stage 3? 
-// a. if the first number is present and the operator is present
+// a. if the first number.length is >= 1 
+// b. first number is not null
+// c. if an operator is present
+// d. if no second number is present
 
 //STAGE 3
 // 1. hit number
@@ -46,7 +50,12 @@
 // if i hit decimal then add decimal to second number string 
 
 // what circumstances would you proceed to stage 4? 
-// a. if i have a first number, an operator and a the second number is not empty (full condition)
+// a. if the first number is not null
+// b. the first number.length is >= 1 
+// c. if an operator is present
+// d. if the second number is not null
+
+
 
 //STAGE 4
 // 1. hit number

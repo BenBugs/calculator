@@ -1,5 +1,10 @@
 $(document).ready(function () {
 
+//calculator display object
+
+
+
+
   // str storage
   let sumStr = [''];
   let operator = null;
