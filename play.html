@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Calculator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+    
+    
+<!-- Added link to the jQuery Library -->
+
+
+    <button type="button btn" class="button" value="5">5</button>
+
+    <h5 id="output" style="font-size: 50px; margin: 30px;"></h5>
+
+<script>
+
+const currentIndex = 0;
+let str = [""];
+
+
+$('button').on('click', function (e) {
+            let btn = e.target.value;
+            str[currentIndex] += e.currentTarget.value;
+    console.log(str);
+            $('#output').text(str);
+});
+
+
+</script>
+
+
+
+
+
+</body>
+</html>
