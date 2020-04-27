@@ -56,7 +56,6 @@ keys.on('click', function (e) {
         } else {
             throw new Error('No operator has been defined');
         }
-
     }
 
 
@@ -92,8 +91,12 @@ keys.on('click', function (e) {
         }
         if (isStage4) {
             secondNumber += value;
+            if (sumTotal !== 0) {
+                renderHtml(operator + secondNumber, sumTotal)
+            } else if (sumTotal === 0) { 
             renderHtml(firstNumber + operator + secondNumber, sumTotal)
             return;
+            }
         }
 
     }
@@ -149,15 +152,15 @@ keys.on('click', function (e) {
             if (firstNumber.includes('.')) {
                 return;
             } else {
-            firstNumber = '0' + value;
+            firstNumber += value;
             renderHtml(firstNumber, sumTotal)
             return;
             }
         }
-        if (isStage3) { // TODO: if sumTotal is not '0' Broken
+        if (isStage3) { 
             secondNumber = '0' + value;
             if (sumTotal !== '0') {
-                renderHtml(operator + secondNumber, sumTotal)
+                renderHtml(firstNumber + operator + secondNumber, sumTotal)
                 return;
             } else {
                 renderHtml(firstNumber + operator + secondNumber, sumTotal)
@@ -230,19 +233,3 @@ keys.on('click', function (e) {
 
 })
 
-
-// let keyType = keys.dataset.type;
-
-// keys.addEventListener('click', e => {
-//     console.log(e.target)
-// // if (e.target)
-//  })
-
-
-
-
-// const article = document.querySelector('#electric-cars');
-
-// article.dataset.columns // "3"
-// article.dataset.indexNumber // "12314"
-// article.dataset.parent // "cars"

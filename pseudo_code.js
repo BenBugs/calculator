@@ -70,6 +70,7 @@
 // b. the first number.length is >= 1 
 // c. if an operator is present
 // d. if the second number is not null
+// e. if sumTotal is null
 
 
 //STAGE 4 - ADD NEW NUMBER OR CLEAR
