@@ -1,4 +1,6 @@
-// STAGE 1
+// STAGES ARE DEPENDENT ON WHAT IS IN THE VARIABLES
+
+// STAGE 1 - goal
 
 //when i see a calculator I may:
 // 1. hit number
@@ -8,7 +10,7 @@
 // 5  hit decimal
 
 // so if I hit number then store number
-// if I hit operator,( +, -, *, /,) clear or equals then nothing happen?
+// if I hit operator,( +, -, *, /,) clear or equals then nothing happens?
 
 
 // what circumstances would you proceed to stage 2? 
@@ -17,7 +19,8 @@
 // c. if no operator is present
 // d. if no second number is present
 
-//STAGE 2
+//STAGE 2 - goal
+
 // 1. hit number
 // 2. hit operator
 // 3. hit clear
@@ -65,7 +68,8 @@
 // 5. hit decimal
 
 // if i hit another number it will append to second number
-// if i hit operator calculate the value of first number + previous operator + second number and store this result as the first number 
+// if i hit operator calculate the value of first number + previous operator + 
+        // second number and store this result as the first number 
         //and replace operator variable to current operator key press and clear second number
 // if i hit clear then clear first number variable, operator variable and second number variable
 // if i hit equals then calculate first number, operator and second number and store the answer in #displayAnswer
@@ -73,5 +77,4 @@
 
 // what circumstances would you proceed to stage 5? 
 // a. if i have a first number, an operator and a the second number is not empty (full condition)
-
 
