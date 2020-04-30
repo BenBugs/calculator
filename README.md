@@ -1,2 +1,0 @@
-# calculator
-A JavaScript calculator.
