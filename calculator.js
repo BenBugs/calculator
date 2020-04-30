@@ -122,7 +122,7 @@ keys.on('click', function (e) {
             // on our first run sum total will be zero
 
             if (sumTotal !== 0) {
-                renderHtml(' ', sumTotal);
+                renderHtml(operator, sumTotal);
                 return;
             }
             renderHtml(firstNumber + operator, sumTotal)
@@ -160,7 +160,7 @@ keys.on('click', function (e) {
         if (isStage3) { 
             secondNumber = '0' + value;
             if (sumTotal !== '0') {
-                renderHtml(firstNumber + operator + secondNumber, sumTotal)
+                renderHtml(operator + secondNumber, sumTotal)
                 return;
             } else {
                 renderHtml(firstNumber + operator + secondNumber, sumTotal)
