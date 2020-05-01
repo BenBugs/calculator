@@ -7,10 +7,73 @@ let operator = null;
 let secondNumber = null;
 let sumTotal = 0;
 
-function renderHtml(firstLine, secondLine) {  //helper function
-    sum.textContent = firstLine,
-        answer.textContent = secondLine
-}
+
+function renderHtml(firstLine , secondLine) { //helper function
+    sum.textContent = firstLine;
+
+
+    // 1. js cant handle number  precisely, only a approx  8digit
+    // 2. 
+    
+    123.323231
+
+    32
+
+    
+    // let stringSecondLine = secondLine.toString();
+    let fixSecondLine = Number(secondLine).toFixed(2);
+    let wholeSecondLine = fixSecondLine.slice(0, String(fixSecondLine).length -2);
+    let sliceSecondLine = fixSecondLine.slice(-2);
+
+    // if the last decimal and the first decimal contain zero then toFixed(0)
+    // if else the last decimal does contains xero && the first decimal doesn't contain zero -  then toFixed(1) 
+    // if else the last decimal and the first decimal don't contain zero the toFixed(2)
+    
+    if (sliceSecondLine.charAt(0) === '0' && sliceSecondLine.charAt(1) === '0') {
+        fixSecondLine = Number(secondLine).toFixed(0);
+    } else if (sliceSecondLine.charAt(0) !== '0' && sliceSecondLine.charAt(1) === '0') {
+        fixSecondLine = Number(secondLine).toFixed(1);
+    } else if (sliceSecondLine.charAt(0) !== '0' && sliceSecondLine.charAt(1) !== '0') {
+        fixSecondLine = Number(secondLine).toFixed(2);
+    }
+
+
+
+    // return answer.textContent = fixSecondLine;
+    // // let fixSecondLine = parseSecondLine.toFixed(2);
+    answer.textContent = wholeSecondLine + fixSecondLine;
+  }
+
+
+
+  const sentence = 'The quick brown fox jumps over the lazy dog.';
+
+  const index = 4;
+  
+  console.log('The character at index ' + index + ' is ' + sentence.charAt(index));
+  // expected output: "The character at index 4 is q"
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // calculator keys
 let keys = $('.keys');
