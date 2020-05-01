@@ -10,49 +10,53 @@ let sumTotal = 0;
 
 function renderHtml(firstLine , secondLine) { //helper function
     sum.textContent = firstLine;
+    console.log(secondLine)
 
-
-    // 1. js cant handle number  precisely, only a approx  8digit
-    // 2. 
-    
-    123.323231
-
-    32
-
-    
     // let stringSecondLine = secondLine.toString();
-    let fixSecondLine = Number(secondLine).toFixed(2);
-    let wholeSecondLine = fixSecondLine.slice(0, String(fixSecondLine).length -2);
-    let sliceSecondLine = fixSecondLine.slice(-2);
+    let fixSecondLine = Number(secondLine).toFixed(2); // converts input number to 2 decimal places
+    //console.log(fixSecondLine) 
+    let convertNumToStr = String(fixSecondLine) // converts number to string so .length can be used
+    //console.log(typeof convertNumToStr)
 
+    let upToAndIncTheDecimal = convertNumToStr.slice(0, convertNumToStr.length -2); // get length of number + 2 decimals
+    console.log(upToAndIncTheDecimal)
+    
+
+    let afterTheDecimal = convertNumToStr.slice(-2);
+    console.log(afterTheDecimal)
+    
     // if the last decimal and the first decimal contain zero then toFixed(0)
     // if else the last decimal does contains xero && the first decimal doesn't contain zero -  then toFixed(1) 
     // if else the last decimal and the first decimal don't contain zero the toFixed(2)
-    
-    if (sliceSecondLine.charAt(0) === '0' && sliceSecondLine.charAt(1) === '0') {
-        fixSecondLine = Number(secondLine).toFixed(0);
-    } else if (sliceSecondLine.charAt(0) !== '0' && sliceSecondLine.charAt(1) === '0') {
-        fixSecondLine = Number(secondLine).toFixed(1);
-    } else if (sliceSecondLine.charAt(0) !== '0' && sliceSecondLine.charAt(1) !== '0') {
-        fixSecondLine = Number(secondLine).toFixed(2);
+
+    if (afterTheDecimal.charAt(0) === '0' && afterTheDecimal.charAt(1) === '0') {  // no decimal value
+        let upToAndIncTheDecimalNum = Number(upToAndIncTheDecimal);
+
+        let afterTheDecimalNum = Number(afterTheDecimal);
+  
+        let output = upToAndIncTheDecimalNum + afterTheDecimalNum;
+        answer.textContent = output.toFixed(0);
+
+    } 
+    else if (afterTheDecimal.charAt(0) !== '0' && afterTheDecimal.charAt(1) === '0') {  // one decimal place
+        let upToAndIncTheDecimalNum = Number(upToAndIncTheDecimal);
+
+        let afterTheDecimalNum = Number(afterTheDecimal);
+  
+        let output = upToAndIncTheDecimalNum + afterTheDecimalNum;
+        answer.textContent = output.toFixed(1);
+        
     }
+    else if (afterTheDecimal.charAt(0) !== '0' && afterTheDecimal.charAt(1) !== '0') { // two decimal places
+        let upToAndIncTheDecimalNum = Number(upToAndIncTheDecimal);
 
+        let afterTheDecimalNum = Number(afterTheDecimal);
+  
+        let output = upToAndIncTheDecimalNum + afterTheDecimalNum;
+        answer.textContent = output.toFixed(2);
 
-
-    // return answer.textContent = fixSecondLine;
-    // // let fixSecondLine = parseSecondLine.toFixed(2);
-    answer.textContent = wholeSecondLine + fixSecondLine;
   }
-
-
-
-  const sentence = 'The quick brown fox jumps over the lazy dog.';
-
-  const index = 4;
-  
-  console.log('The character at index ' + index + ' is ' + sentence.charAt(index));
-  // expected output: "The character at index 4 is q"
-  
+}
 
 
 
@@ -60,14 +64,32 @@ function renderHtml(firstLine , secondLine) { //helper function
 
 
 
+//   function renderHtml(firstLine , secondLine) { //helper function
+//     sum.textContent = firstLine;
 
+//     // let stringSecondLine = secondLine.toString();
+//     let fixSecondLine = Number(secondLine).toFixed(2);
+//     console.log(fixSecondLine)
+//     let convertNumToStr = String(fixSecondLine)
 
+//     let wholeSecondLine = fixSecondLine.slice(0, String(fixSecondLine).length -2); // get length of number + 2 decimals
+//     console.log(fixSecondLine)
+//     let sliceSecondLine = fixSecondLine.slice(-2);
+//     console.log(fixSecondLine)
 
+//     // if the last decimal and the first decimal contain zero then toFixed(0)
+//     // if else the last decimal does contains xero && the first decimal doesn't contain zero -  then toFixed(1) 
+//     // if else the last decimal and the first decimal don't contain zero the toFixed(2)
 
-
-
-
-
+//     if (sliceSecondLine.charAt(0) === '0' && sliceSecondLine.charAt(1) === '0') {
+//         fixSecondLine = Number(secondLine).toFixed(0);
+//     } else if (sliceSecondLine.charAt(0) !== '0' && sliceSecondLine.charAt(1) === '0') {
+//         fixSecondLine = Number(secondLine).toFixed(1);
+//     } else if (sliceSecondLine.charAt(0) !== '0' && sliceSecondLine.charAt(1) !== '0') {
+//         fixSecondLine = Number(secondLine).toFixed(2);
+//     }
+//     answer.textContent = wholeSecondLine + fixSecondLine;
+//   }
 
 
 
