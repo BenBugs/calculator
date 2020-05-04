@@ -49,44 +49,6 @@ function renderHtml(firstLine, secondLine) { //helper function
 }
 
 
-
-
-
-
-
-//   function renderHtml(firstLine , secondLine) { //helper function
-//     sum.textContent = firstLine;
-
-//     // let stringSecondLine = secondLine.toString();
-//     let fixSecondLine = Number(secondLine).toFixed(2);
-//     console.log(fixSecondLine)
-//     let convertNumToStr = String(fixSecondLine)
-
-//     let wholeSecondLine = fixSecondLine.slice(0, String(fixSecondLine).length -2); // get length of number + 2 decimals
-//     console.log(fixSecondLine)
-//     let sliceSecondLine = fixSecondLine.slice(-2);
-//     console.log(fixSecondLine)
-
-//     // if the last decimal and the first decimal contain zero then toFixed(0)
-//     // if else the last decimal does contains xero && the first decimal doesn't contain zero -  then toFixed(1) 
-//     // if else the last decimal and the first decimal don't contain zero the toFixed(2)
-
-//     if (sliceSecondLine.charAt(0) === '0' && sliceSecondLine.charAt(1) === '0') {
-//         fixSecondLine = Number(secondLine).toFixed(0);
-//     } else if (sliceSecondLine.charAt(0) !== '0' && sliceSecondLine.charAt(1) === '0') {
-//         fixSecondLine = Number(secondLine).toFixed(1);
-//     } else if (sliceSecondLine.charAt(0) !== '0' && sliceSecondLine.charAt(1) !== '0') {
-//         fixSecondLine = Number(secondLine).toFixed(2);
-//     }
-//     answer.textContent = wholeSecondLine + fixSecondLine;
-//   }
-
-
-
-
-
-
-
 // calculator keys
 let keys = $('.keys'); // OMG this needs fixing!!!!!!
 // console.log(keys)
