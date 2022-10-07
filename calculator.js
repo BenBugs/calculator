@@ -54,21 +54,141 @@ let keys = $('.keys'); // OMG this needs fixing!!!!!!
 // console.log(keys)
 
 //firstNumber + operator
+let display = {
+    
+    state1: firstNumber + operator;
+    state2: operator + firstNumber, 
+    fullOperation(){
+        return firstNumber + operator + secondNumber
+    }
+}
+
+
+dataTypeHandler[dataType][stage]()
+let dataTypeHandler = {
+    number: {
+        stage1: function(value){
+            firstNumber = value;
+            renderHtml(firstNumber, sumTotal)
+
+        },
+        stage2: function(value){
+            if (sumTotal !== 0) {
+                // user has got something on the screen
+                // do you want to overwrite it?
+                // renderHtml(null, sumTotal)
+                firstNumber = value;
+                secondNumber = null;
+                operator = null;
+                sumTotal = 0;
+                renderHtml(firstNumber, sumTotal)
+            } else {
+                firstNumber += value;
+                renderHtml(firstNumber, sumTotal)
+            }
+        },
+        stage3: function(value){
+            secondNumber = value;
+
+            if (sumTotal !== 0) {
+                renderHtml(operator + secondNumber, sumTotal);
+
+            }
+            renderHtml(firstNumber + operator + secondNumber, sumTotal)
+        },
+        stage4: function(value){
+            secondNumber += value;
+            if (sumTotal !== 0) {
+                renderHtml(operator + secondNumber, sumTotal)
+            } else if (sumTotal === 0) {
+                renderHtml(display.fullOperation(), sumTotal)
+            }
+        }
+    },
+    operator: {
+        stage1: function(value){},
+        stage2: function(value){
+            operator = value;
+            if (sumTotal !== 0) {
+                renderHtml(operator, sumTotal)
+            } else if (sumTotal === 0) {
+                renderHtml(firstNumber + operator, sumTotal)
+            }
+        },
+        stage3: function(value){
+            operator = value;
+            // to only show fisrtNum on first round
+            // on our first run sum total will be zero
+
+            if (sumTotal !== 0) {
+                renderHtml(operator, sumTotal);
+                return;
+            }
+            renderHtml(firstNumber + operator, sumTotal)
+            return;
+            
+        },
+        stage4: function(value){
+            
+        }
+
+    }
+
+    operator: function (value) {
+        let value = e.target.innerText;
+
+        if (isStage1) {
+            return;
+        }
+        if (isStage2) {
+            operator = value;
+            if (sumTotal !== 0) {
+                renderHtml(operator, sumTotal)
+            } else if (sumTotal === 0) {
+               
+                renderHtml(firstNumber + operator, sumTotal)
+            }
+            return;
+        }
+        if (isStage3) {
+           
+        }
+        if (isStage4) {
+            let result = calculateValue();
+
+            firstNumber = String(result)
+            sumTotal = firstNumber;
+            secondNumber = null;
+            operator = value;
+            renderHtml(operator, firstNumber)
+            return;
+        }
+        
+    },
+}
+
 
 keys.on('click', function (e) {
     console.log(e.target.attributes) //e is event and .target is element
     console.log(e.target.attributes[1].value)
     let dataType = e.target.attributes[1].value
-    let isStage1 = firstNumber === null && operator === null && secondNumber === null;
-    let isStage2 = firstNumber !== null && firstNumber.length >= 1 && operator === null && secondNumber === null;
-    let isStage3 = firstNumber !== null && firstNumber.length >= 1 && operator !== null && secondNumber === null;
-    let isStage4 = firstNumber !== null && firstNumber.length >= 1 && operator !== null && secondNumber !== null;
 
+    let stage;
 
-    console.log({ isStage1 })
-    console.log({ isStage2 })
-    console.log({ isStage3 })
-    console.log({ isStage4 })
+    if( firstNumber === null && operator === null && secondNumber === null ){
+        stage = 'stage1'
+    }else if(firstNumber !== null && firstNumber.length >= 1 && operator === null && secondNumber === null){
+        stage = 'stage2'
+    }else if (firstNumber !== null && firstNumber.length >= 1 && operator !== null && secondNumber === null){
+        stage = 'stage3'
+    }else if (firstNumber !== null && firstNumber.length >= 1 && operator !== null && secondNumber !== null){
+        stage = 'stage4'
+    }else{
+        throw new Error("Unknown stage.")
+    }
+
+    console.log({ stage })
+
 
     console.log({ firstNumber })
     console.log({ operator })
@@ -96,91 +216,29 @@ keys.on('click', function (e) {
     }
 
 
-    if (dataType === 'number') {
-        let value = e.target.innerText;
-        console.log(value)
 
-        if (isStage1) {
-            firstNumber = value;
-            renderHtml(firstNumber, sumTotal)
-            return;
-        }
-        if (isStage2) {
-            if (sumTotal !== 0) {
-                // user has got something on the screen
-                // do you want to overwrite it?
-                // renderHtml(null, sumTotal)
-                firstNumber = value;
-                secondNumber = null;
-                operator = null;
-                sumTotal = 0;
+    // let car = {
+    //     name: 'toyota',
+    //     drive: function(){
 
-                renderHtml(firstNumber, sumTotal)
-            } else {
-                firstNumber += value;
-                renderHtml(firstNumber, sumTotal)
-                return;
-            }
-        }
-        if (isStage3) {
-            secondNumber = value;
+    //     }
+    // }
 
-            if (sumTotal !== 0) {
-                renderHtml(operator + secondNumber, sumTotal);
-                return;
-            }
-            renderHtml(firstNumber + operator + secondNumber, sumTotal)
-            return;
-        }
-        if (isStage4) {
-            secondNumber += value;
-            if (sumTotal !== 0) {
-                renderHtml(operator + secondNumber, sumTotal)
-            } else if (sumTotal === 0) {
-                renderHtml(firstNumber + operator + secondNumber, sumTotal)
-                return;
-            }
-        }
+    // car.drive()
+    // car["drive"]()
 
-    }
+
+    // reduce nest level && get rid of giants
+    // reduce repetition
+    // variation -- generalise our code
+    
+   
+
+    let value = e.target.innerText;
+    dataTypeHandler[dataType][stage](value)
 
     if (dataType === 'operator') {
-        let value = e.target.innerText;
 
-        if (isStage1) {
-            return;
-        }
-        if (isStage2) {
-            operator = value;
-            if (sumTotal !== 0) {
-                renderHtml(operator, sumTotal)
-            } else if (sumTotal === 0) {
-                renderHtml(firstNumber + operator, sumTotal)
-            }
-            return;
-        }
-        if (isStage3) {
-            operator = value;
-            // to only show fisrtNum on first round
-            // on our first run sum total will be zero
-
-            if (sumTotal !== 0) {
-                renderHtml(operator, sumTotal);
-                return;
-            }
-            renderHtml(firstNumber + operator, sumTotal)
-            return;
-        }
-        if (isStage4) {
-            let result = calculateValue();
-
-            firstNumber = String(result)
-            sumTotal = firstNumber;
-            secondNumber = null;
-            operator = value;
-            renderHtml(operator, firstNumber)
-            return;
-        }
     }
 
     if (dataType === 'decimal') {
